@@ -1,25 +1,370 @@
 {
-  "times": [
-    "Bom Pastor",
-    "Perpétuo Socorro",
-    "São Rafael",
-    "São Luiz Gonzaga",
-    "Sagrada Família",
-    "N. Sra da Penha",
-    "N. Sra do Rosário",
-    "N. Sra da Vitória"
-  ],
+  "config": {
+    "campeonato": "Campeonato paroquial de futsal da paróquia Bom Pastor",
+    "tempo_jogo": "30m"
+  },
 
-  "jogos": [
+  "grupos": {
+    "Grupo 1": [
+      "Bom Pastor",
+      "Perpétuo Socorro",
+      "São Rafael",
+      "São Luiz Gonzaga"
+    ],
+    "Grupo 2": [
+      "Sagrada Família",
+      "N. Sra da Penha",
+      "N. Sra do Rosário",
+      "N. Sra da Vitória"
+    ]
+  },
+
+  "tabela_resultados": [
     {
+      "id": 1,
       "dia": "Sábado",
       "hora": "15:00",
       "mandante": "Bom Pastor",
       "visitante": "Perpétuo Socorro",
       "fase": "Grupos",
-      "golsMandante": [],
-      "golsVisitante": [],
-      "cartoes": []
+      "grupo": "Grupo 1",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 2,
+      "dia": "Sábado",
+      "hora": "15:40",
+      "mandante": "Sagrada Família",
+      "visitante": "N. Sra da Penha",
+      "fase": "Grupos",
+      "grupo": "Grupo 2",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 3,
+      "dia": "Sábado",
+      "hora": "16:20",
+      "mandante": "São Rafael",
+      "visitante": "São Luiz Gonzaga",
+      "fase": "Grupos",
+      "grupo": "Grupo 1",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 4,
+      "dia": "Sábado",
+      "hora": "17:00",
+      "mandante": "N. Sra do Rosário",
+      "visitante": "N. Sra da Vitória",
+      "fase": "Grupos",
+      "grupo": "Grupo 2",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 5,
+      "dia": "Sábado",
+      "hora": "17:40",
+      "mandante": "Bom Pastor",
+      "visitante": "São Rafael",
+      "fase": "Grupos",
+      "grupo": "Grupo 1",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 6,
+      "dia": "Sábado",
+      "hora": "18:20",
+      "mandante": "Sagrada Família",
+      "visitante": "N. Sra do Rosário",
+      "fase": "Grupos",
+      "grupo": "Grupo 2",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 7,
+      "dia": "Sábado",
+      "hora": "19:00",
+      "mandante": "Perpétuo Socorro",
+      "visitante": "São Luiz Gonzaga",
+      "fase": "Grupos",
+      "grupo": "Grupo 1",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 8,
+      "dia": "Sábado",
+      "hora": "19:40",
+      "mandante": "N. Sra da Penha",
+      "visitante": "N. Sra da Vitória",
+      "fase": "Grupos",
+      "grupo": "Grupo 2",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 9,
+      "dia": "Domingo",
+      "hora": "09:30",
+      "mandante": "Bom Pastor",
+      "visitante": "São Luiz Gonzaga",
+      "fase": "Grupos",
+      "grupo": "Grupo 1",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 10,
+      "dia": "Domingo",
+      "hora": "10:20",
+      "mandante": "Sagrada Família",
+      "visitante": "N. Sra da Vitória",
+      "fase": "Grupos",
+      "grupo": "Grupo 2",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 11,
+      "dia": "Domingo",
+      "hora": "11:10",
+      "mandante": "Perpétuo Socorro",
+      "visitante": "São Rafael",
+      "fase": "Grupos",
+      "grupo": "Grupo 1",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 12,
+      "dia": "Domingo",
+      "hora": "12:00",
+      "mandante": "N. Sra da Penha",
+      "visitante": "N. Sra do Rosário",
+      "fase": "Grupos",
+      "grupo": "Grupo 2",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+
+    {
+      "id": 13,
+      "dia": "Domingo",
+      "hora": "13:30",
+      "mandante": "1º Grupo 1",
+      "visitante": "2º Grupo 2",
+      "fase": "Semifinal",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 14,
+      "dia": "Domingo",
+      "hora": "14:50",
+      "mandante": "1º Grupo 2",
+      "visitante": "2º Grupo 1",
+      "fase": "Semifinal",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 15,
+      "dia": "Domingo",
+      "hora": "16:00",
+      "mandante": "Perdedor Jogo 13",
+      "visitante": "Perdedor Jogo 14",
+      "fase": "3º Lugar",
+      "gols_mandante": null,
+      "gols_visitante": null
+    },
+    {
+      "id": 16,
+      "dia": "Domingo",
+      "hora": "17:00",
+      "mandante": "Vencedor Jogo 13",
+      "visitante": "Vencedor Jogo 14",
+      "fase": "Final",
+      "gols_mandante": null,
+      "gols_visitante": null
     }
+  ],
+
+  "tabela_artilharia": [
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
+    {
+      "jogador": "João",
+      "time": "Bom Pastor",
+      "gols": 0
+    },
+    {
+      "jogador": "Carlos",
+      "time": "Perpétuo Socorro",
+      "gols": 0
+    },
   ]
 }
