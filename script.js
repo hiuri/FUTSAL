@@ -3,59 +3,56 @@ fetch('dados.json')
   .then(data => {
 
     const tabela = {};
-    const artilharia = {};
-    const cartoes = {};
 
-    data.times.forEach(time => {
+    // Inicializa times
+    Object.values(data.grupos).flat().forEach(time => {
       tabela[time] = { pts:0, j:0, v:0, e:0, d:0, gp:0, gc:0 };
     });
 
-    data.jogos.forEach(jogo => {
+    // PROCESSA RESULTADOS
+    data.tabela_resultados.forEach(jogo => {
 
-      const gm = jogo.golsMandante.reduce((s,g)=>s+g.quantidade,0);
-      const gv = jogo.golsVisitante.reduce((s,g)=>s+g.quantidade,0);
+      if (jogo.gols_mandante === null || jogo.gols_visitante === null) return;
+      if (jogo.fase !== "Grupos") return;
 
-      if (jogo.fase === "Grupos") {
-        tabela[jogo.mandante].j++;
-        tabela[jogo.visitante].j++;
-        tabela[jogo.mandante].gp += gm;
-        tabela[jogo.mandante].gc += gv;
-        tabela[jogo.visitante].gp += gv;
-        tabela[jogo.visitante].gc += gm;
+      const gm = jogo.gols_mandante;
+      const gv = jogo.gols_visitante;
 
-        if (gm > gv) {
-          tabela[jogo.mandante].v++;
-          tabela[jogo.mandante].pts += 3;
-          tabela[jogo.visitante].d++;
-        } else if (gv > gm) {
-          tabela[jogo.visitante].v++;
-          tabela[jogo.visitante].pts += 3;
-          tabela[jogo.mandante].d++;
-        } else {
-          tabela[jogo.mandante].e++;
-          tabela[jogo.visitante].e++;
-          tabela[jogo.mandante].pts++;
-          tabela[jogo.visitante].pts++;
-        }
+      const mandante = tabela[jogo.mandante];
+      const visitante = tabela[jogo.visitante];
+
+      mandante.j++;
+      visitante.j++;
+
+      mandante.gp += gm;
+      mandante.gc += gv;
+      visitante.gp += gv;
+      visitante.gc += gm;
+
+      if (gm > gv) {
+        mandante.v++;
+        mandante.pts += 3;
+        visitante.d++;
+      } else if (gv > gm) {
+        visitante.v++;
+        visitante.pts += 3;
+        mandante.d++;
+      } else {
+        mandante.e++;
+        visitante.e++;
+        mandante.pts++;
+        visitante.pts++;
       }
-
-      [...jogo.golsMandante, ...jogo.golsVisitante].forEach(g => {
-        artilharia[g.jogador] = (artilharia[g.jogador] || 0) + g.quantidade;
-      });
-
-      jogo.cartoes.forEach(c => {
-        if (!cartoes[c.jogador]) {
-          cartoes[c.jogador] = { time:c.time, amarelo:0, vermelho:0 };
-        }
-        cartoes[c.jogador].amarelo += c.amarelo;
-        cartoes[c.jogador].vermelho += c.vermelho;
-      });
     });
 
     // CLASSIFICAÇÃO
     const corpo = document.querySelector('#classificacao tbody');
     Object.entries(tabela)
-      .sort((a,b)=>b[1].pts - a[1].pts || (b[1].gp-b[1].gc)-(a[1].gp-a[1].gc))
+      .sort((a,b)=> 
+        b[1].pts - a[1].pts ||
+        (b[1].gp - b[1].gc) - (a[1].gp - a[1].gc) ||
+        b[1].gp - a[1].gp
+      )
       .forEach(([time,t])=>{
         corpo.innerHTML += `
           <tr>
@@ -73,51 +70,44 @@ fetch('dados.json')
 
     // ARTILHARIA
     const art = document.querySelector('#artilharia tbody');
-    Object.entries(artilharia)
-      .sort((a,b)=>b[1]-a[1])
-      .forEach(([j,g])=>{
-        art.innerHTML += `<tr><td>${j}</td><td>${g}</td></tr>`;
+    data.tabela_artilharia
+      .sort((a,b)=>b.gols - a.gols)
+      .forEach(j=>{
+        art.innerHTML += `
+          <tr>
+            <td>${j.jogador}</td>
+            <td>${j.gols}</td>
+          </tr>`;
       });
 
-    // CARTÕES
-    const car = document.querySelector('#cartoes tbody');
-    Object.entries(cartoes).forEach(([j,c])=>{
-      car.innerHTML += `
-        <tr>
-          <td>${j}</td>
-          <td>${c.time}</td>
-          <td>${c.amarelo}</td>
-          <td>${c.vermelho}</td>
-        </tr>`;
-    });
-
-    // JOGOS
+    // TABELA DE JOGOS + MATA-MATA
     const jogos = document.querySelector('#jogos tbody');
     const mata = document.querySelector('#mataMata tbody');
 
-    data.jogos.forEach(j=>{
-      const gm = j.golsMandante.reduce((s,g)=>s+g.quantidade,0);
-      const gv = j.golsVisitante.reduce((s,g)=>s+g.quantidade,0);
-      const placar = (gm+gv>0) ? `${gm} x ${gv}` : "x";
+    data.tabela_resultados.forEach(j=>{
+      const placar = (j.gols_mandante !== null)
+        ? `${j.gols_mandante} x ${j.gols_visitante}`
+        : "x";
 
-      const linha = `
-        <tr>
-          <td>${j.dia}</td>
-          <td>${j.hora}</td>
-          <td>${j.mandante}</td>
-          <td>${placar}</td>
-          <td>${j.visitante}</td>
-          <td>${j.fase}</td>
-        </tr>`;
-
-      if (j.fase === "Grupos") jogos.innerHTML += linha;
-      else mata.innerHTML += `
-        <tr>
-          <td>${j.fase}</td>
-          <td>${j.mandante}</td>
-          <td>${placar}</td>
-          <td>${j.visitante}</td>
-        </tr>`;
+      if (j.fase === "Grupos") {
+        jogos.innerHTML += `
+          <tr>
+            <td>${j.dia}</td>
+            <td>${j.hora}</td>
+            <td>${j.mandante}</td>
+            <td>${placar}</td>
+            <td>${j.visitante}</td>
+            <td>${j.fase}</td>
+          </tr>`;
+      } else {
+        mata.innerHTML += `
+          <tr>
+            <td>${j.fase}</td>
+            <td>${j.mandante}</td>
+            <td>${placar}</td>
+            <td>${j.visitante}</td>
+          </tr>`;
+      }
     });
 
   });
