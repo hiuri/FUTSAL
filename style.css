@@ -1,0 +1,17 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.hero {
+  height: 70vh;
+  background: #0d1b2a;
+  color: white;
+}
+
+.hero-logo {
+  max-width: 220px;
+}
+
+h2 {
+  margin-top: 40px;
+}
