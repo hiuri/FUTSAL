@@ -4,22 +4,27 @@ fetch('dados.json')
 
     const tabela = {};
 
-    // Inicializa times
-    Object.values(data.grupos).flat().forEach(time => {
-      tabela[time] = { pts:0, j:0, v:0, e:0, d:0, gp:0, gc:0 };
-    });
-
-    // PROCESSA RESULTADOS
+    // =========================
+    // PROCESSA RESULTADOS (GRUPOS)
+    // =========================
     data.tabela_resultados.forEach(jogo => {
 
-      if (jogo.gols_mandante === null || jogo.gols_visitante === null) return;
       if (jogo.fase !== "Grupos") return;
+      if (jogo.gols_mandante === null || jogo.gols_visitante === null) return;
 
-      const gm = jogo.gols_mandante;
-      const gv = jogo.gols_visitante;
+      // Garante que os times existem
+      if (!tabela[jogo.mandante]) {
+        tabela[jogo.mandante] = { pts:0, j:0, v:0, e:0, d:0, gp:0, gc:0 };
+      }
+      if (!tabela[jogo.visitante]) {
+        tabela[jogo.visitante] = { pts:0, j:0, v:0, e:0, d:0, gp:0, gc:0 };
+      }
 
       const mandante = tabela[jogo.mandante];
       const visitante = tabela[jogo.visitante];
+
+      const gm = jogo.gols_mandante;
+      const gv = jogo.gols_visitante;
 
       mandante.j++;
       visitante.j++;
@@ -45,8 +50,12 @@ fetch('dados.json')
       }
     });
 
-    // CLASSIFICAÇÃO
+    // =========================
+    // CLASSIFICAÇÃO GERAL
+    // =========================
     const corpo = document.querySelector('#classificacao tbody');
+    corpo.innerHTML = "";
+
     Object.entries(tabela)
       .sort((a,b)=> 
         b[1].pts - a[1].pts ||
@@ -68,8 +77,12 @@ fetch('dados.json')
           </tr>`;
       });
 
+    // =========================
     // ARTILHARIA
+    // =========================
     const art = document.querySelector('#artilharia tbody');
+    art.innerHTML = "";
+
     data.tabela_artilharia
       .sort((a,b)=>b.gols - a.gols)
       .forEach(j=>{
@@ -80,9 +93,14 @@ fetch('dados.json')
           </tr>`;
       });
 
+    // =========================
     // TABELA DE JOGOS + MATA-MATA
+    // =========================
     const jogos = document.querySelector('#jogos tbody');
     const mata = document.querySelector('#mataMata tbody');
+
+    jogos.innerHTML = "";
+    mata.innerHTML = "";
 
     data.tabela_resultados.forEach(j=>{
       const placar = (j.gols_mandante !== null)
@@ -110,4 +128,5 @@ fetch('dados.json')
       }
     });
 
-  });
+  })
+  .catch(err => console.error("Erro ao carregar dados:", err));
