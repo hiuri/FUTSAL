@@ -28,8 +28,8 @@
       "visitante": "Perpétuo Socorro",
       "fase": "Grupos",
       "grupo": "Grupo 1",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 1,
+      "gols_visitante": 0
     },
     {
       "id": 2,
