@@ -199,12 +199,12 @@
     {
       "jogador": "João",
       "time": "Bom Pastor",
-      "gols": 0
+      "gols": 1
     },
     {
       "jogador": "Carlos",
       "time": "Perpétuo Socorro",
-      "gols": 0
+      "gols": 5
     }
   ]
 }
