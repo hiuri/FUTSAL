@@ -1,76 +1,92 @@
 fetch('dados.json')
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Erro ao carregar JSON");
+    return res.json();
+  })
   .then(data => {
 
-    // =========================
-    // INICIALIZA TABELA COM TODOS OS TIMES
-    // =========================
-    const tabela = {};
+    /* =========================
+       CLASSIFICAÇÃO POR GRUPO
+    ========================= */
 
-    Object.values(data.grupos).flat().forEach(time => {
-      tabela[time] = {
-        pts: 0,
-        j: 0,
-        v: 0,
-        e: 0,
-        d: 0,
-        gp: 0,
-        gc: 0
-      };
-    });
+    const container = document.querySelector('#classificacaoGrupos');
+    container.innerHTML = "";
 
-    // =========================
-    // PROCESSA RESULTADOS (FASE DE GRUPOS)
-    // =========================
-    data.tabela_resultados.forEach(jogo => {
+    Object.entries(data.grupos).forEach(([nomeGrupo, timesGrupo]) => {
 
-      if (jogo.fase !== "Grupos") return;
-      if (jogo.gols_mandante === null || jogo.gols_visitante === null) return;
+      const tabela = {};
 
-      const mandante = tabela[jogo.mandante];
-      const visitante = tabela[jogo.visitante];
+      // inicializa times do grupo
+      timesGrupo.forEach(time => {
+        tabela[time] = { pts:0, j:0, v:0, e:0, d:0, gp:0, gc:0 };
+      });
 
-      const gm = jogo.gols_mandante;
-      const gv = jogo.gols_visitante;
+      // processa jogos do grupo
+      data.tabela_resultados.forEach(jogo => {
 
-      mandante.j++;
-      visitante.j++;
+        if (jogo.fase !== "Grupos") return;
+        if (!tabela[jogo.mandante] || !tabela[jogo.visitante]) return;
+        if (jogo.gols_mandante === null || jogo.gols_visitante === null) return;
 
-      mandante.gp += gm;
-      mandante.gc += gv;
-      visitante.gp += gv;
-      visitante.gc += gm;
+        const gm = jogo.gols_mandante;
+        const gv = jogo.gols_visitante;
 
-      if (gm > gv) {
-        mandante.v++;
-        mandante.pts += 3;
-        visitante.d++;
-      } else if (gv > gm) {
-        visitante.v++;
-        visitante.pts += 3;
-        mandante.d++;
-      } else {
-        mandante.e++;
-        visitante.e++;
-        mandante.pts++;
-        visitante.pts++;
-      }
-    });
+        const mandante = tabela[jogo.mandante];
+        const visitante = tabela[jogo.visitante];
 
-    // =========================
-    // CLASSIFICAÇÃO GERAL
-    // =========================
-    const corpo = document.querySelector('#classificacao tbody');
-    corpo.innerHTML = "";
+        mandante.j++;
+        visitante.j++;
 
-    Object.entries(tabela)
-      .sort((a, b) =>
+        mandante.gp += gm;
+        mandante.gc += gv;
+        visitante.gp += gv;
+        visitante.gc += gm;
+
+        if (gm > gv) {
+          mandante.v++;
+          mandante.pts += 3;
+          visitante.d++;
+        } else if (gv > gm) {
+          visitante.v++;
+          visitante.pts += 3;
+          mandante.d++;
+        } else {
+          mandante.e++;
+          visitante.e++;
+          mandante.pts++;
+          visitante.pts++;
+        }
+      });
+
+      // ordenação
+      const classificados = Object.entries(tabela).sort((a,b)=>
         b[1].pts - a[1].pts ||
         (b[1].gp - b[1].gc) - (a[1].gp - a[1].gc) ||
         b[1].gp - a[1].gp
-      )
-      .forEach(([time, t]) => {
-        corpo.innerHTML += `
+      );
+
+      // monta tabela HTML do grupo
+      let html = `
+        <h2 class="mt-5">${nomeGrupo}</h2>
+        <table class="table table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Time</th>
+              <th>Pts</th>
+              <th>J</th>
+              <th>V</th>
+              <th>E</th>
+              <th>D</th>
+              <th>GP</th>
+              <th>GC</th>
+              <th>SG</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      classificados.forEach(([time,t])=>{
+        html += `
           <tr>
             <td>${time}</td>
             <td>${t.pts}</td>
@@ -81,37 +97,43 @@ fetch('dados.json')
             <td>${t.gp}</td>
             <td>${t.gc}</td>
             <td>${t.gp - t.gc}</td>
-          </tr>`;
+          </tr>
+        `;
       });
 
-    // =========================
-    // ARTILHARIA
-    // =========================
+      html += `</tbody></table>`;
+      container.innerHTML += html;
+
+    });
+
+    /* =========================
+       ARTILHARIA
+    ========================= */
+
     const art = document.querySelector('#artilharia tbody');
     art.innerHTML = "";
 
     data.tabela_artilharia
-      .sort((a, b) => b.gols - a.gols)
-      .forEach(j => {
+      .sort((a,b)=>b.gols - a.gols)
+      .forEach(j=>{
         art.innerHTML += `
           <tr>
             <td>${j.jogador}</td>
-            <td>${j.time}</td>
             <td>${j.gols}</td>
           </tr>`;
       });
 
-    // =========================
-    // TABELA DE JOGOS (GRUPOS) + MATA-MATA
-    // =========================
+    /* =========================
+       TABELA DE JOGOS + MATA-MATA
+    ========================= */
+
     const jogos = document.querySelector('#jogos tbody');
     const mata = document.querySelector('#mataMata tbody');
 
     jogos.innerHTML = "";
     mata.innerHTML = "";
 
-    data.tabela_resultados.forEach(j => {
-
+    data.tabela_resultados.forEach(j=>{
       const placar = (j.gols_mandante !== null)
         ? `${j.gols_mandante} x ${j.gols_visitante}`
         : "x";
@@ -124,7 +146,7 @@ fetch('dados.json')
             <td>${j.mandante}</td>
             <td>${placar}</td>
             <td>${j.visitante}</td>
-            <td>${j.grupo}</td>
+            <td>${j.fase}</td>
           </tr>`;
       } else {
         mata.innerHTML += `
