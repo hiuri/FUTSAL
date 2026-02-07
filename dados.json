@@ -39,8 +39,8 @@
       "visitante": "N. Sra da Penha",
       "fase": "Grupos",
       "grupo": "Grupo 2",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 3,
+      "gols_visitante": 1
     },
     {
       "id": 3,
