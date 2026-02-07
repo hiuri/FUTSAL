@@ -1,0 +1,25 @@
+{
+  "times": [
+    "Bom Pastor",
+    "Perpétuo Socorro",
+    "São Rafael",
+    "São Luiz Gonzaga",
+    "Sagrada Família",
+    "N. Sra da Penha",
+    "N. Sra do Rosário",
+    "N. Sra da Vitória"
+  ],
+
+  "jogos": [
+    {
+      "dia": "Sábado",
+      "hora": "15:00",
+      "mandante": "Bom Pastor",
+      "visitante": "Perpétuo Socorro",
+      "fase": "Grupos",
+      "golsMandante": [],
+      "golsVisitante": [],
+      "cartoes": []
+    }
+  ]
+}
