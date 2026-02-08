@@ -138,8 +138,8 @@
       "visitante": "São Rafael",
       "fase": "Grupos",
       "grupo": "Grupo 1",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 0,
+      "gols_visitante": 3
     },
     {
       "id": 12,
