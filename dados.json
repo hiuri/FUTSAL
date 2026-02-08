@@ -7,7 +7,7 @@
   "grupos": {
     "Grupo 1": [
       "Bom Pastor",
-      "Perpétuo Socorro",
+      "Perpétuo Socorro (ELIMINADO)",
       "São Rafael",
       "São Luiz Gonzaga"
     ],
@@ -28,8 +28,8 @@
       "visitante": "Perpétuo Socorro",
       "fase": "Grupos",
       "grupo": "Grupo 1",
-      "gols_mandante": 1,
-      "gols_visitante": 0
+      "gols_mandante": 3,
+      "gols_visitante": 4
     },
     {
       "id": 2,
@@ -39,7 +39,7 @@
       "visitante": "N. Sra da Penha",
       "fase": "Grupos",
       "grupo": "Grupo 2",
-      "gols_mandante": 3,
+      "gols_mandante": 1,
       "gols_visitante": 1
     },
     {
@@ -50,8 +50,8 @@
       "visitante": "São Luiz Gonzaga",
       "fase": "Grupos",
       "grupo": "Grupo 1",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 1,
+      "gols_visitante": 4
     },
     {
       "id": 4,
@@ -61,8 +61,8 @@
       "visitante": "N. Sra da Vitória",
       "fase": "Grupos",
       "grupo": "Grupo 2",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 5,
+      "gols_visitante": 3
     },
     {
       "id": 5,
@@ -72,8 +72,8 @@
       "visitante": "São Rafael",
       "fase": "Grupos",
       "grupo": "Grupo 1",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 1,
+      "gols_visitante": 2
     },
     {
       "id": 6,
@@ -83,8 +83,8 @@
       "visitante": "N. Sra do Rosário",
       "fase": "Grupos",
       "grupo": "Grupo 2",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 2,
+      "gols_visitante": 4
     },
     {
       "id": 7,
@@ -94,8 +94,8 @@
       "visitante": "São Luiz Gonzaga",
       "fase": "Grupos",
       "grupo": "Grupo 1",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 0,
+      "gols_visitante": 3
     },
     {
       "id": 8,
@@ -105,8 +105,8 @@
       "visitante": "N. Sra da Vitória",
       "fase": "Grupos",
       "grupo": "Grupo 2",
-      "gols_mandante": null,
-      "gols_visitante": null
+      "gols_mandante": 1,
+      "gols_visitante": 4
     },
     {
       "id": 9,
