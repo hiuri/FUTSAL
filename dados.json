@@ -197,14 +197,94 @@
 
   "tabela_artilharia": [
     {
-      "jogador": "João",
-      "time": "Bom Pastor",
+      "jogador": "Murilo - NSP",
+      "time": "NSP",
       "gols": 1
     },
     {
-      "jogador": "Carlos",
-      "time": "Perpétuo Socorro",
-      "gols": 5
+      "jogador": "Caio - NSP",
+      "time": "NSP",
+      "gols": 1
+    },
+    {
+      "jogador": "Filipe - NSV",
+      "time": "NSV",
+      "gols": 2
+    },
+    {
+      "jogador": "João Soares - NSV",
+      "time": "NSV",
+      "gols": 2
+    },
+    {
+      "jogador": "Julio Cesar - NSV",
+      "time": "NSV",
+      "gols": 3
+    },
+    {
+      "jogador": "João Paulo - SF",
+      "time": "SF",
+      "gols": 1
+    },
+    {
+      "jogador": "Jorge - SF",
+      "time": "SF",
+      "gols": 1
+    },
+    {
+      "jogador": "Glauber - SF",
+      "time": "SF",
+      "gols": 1
+    },
+    {
+      "jogador": "Guilberth - NSR",
+      "time": "NSR",
+      "gols": 3
+    },
+    {
+      "jogador": "Pietro - NSR",
+      "time": "NSR",
+      "gols": 3
+    },
+    {
+      "jogador": "Vitor - NSR",
+      "time": "NSR",
+      "gols": 2
+    },
+    {
+      "jogador": "Samuel - BP",
+      "time": "BP",
+      "gols": 2
+    },
+    {
+      "jogador": "João Pedro - BP",
+      "time": "BP",
+      "gols": 1
+    },
+    {
+      "jogador": "Manoel Marinho - BP",
+      "time": "BP",
+      "gols": 1
+    },
+    {
+      "jogador": "Adriel - SR",
+      "time": "SR",
+      "gols": 2
+    },
+    {
+      "jogador": "Renato - SR",
+      "time": "SR",
+      "gols": 1
+    },
+    {
+      "jogador": "Aurino - SLG",
+      "time": "SLG",
+      "gols": 1
+    },
+    {
+      "jogador": "João Pedro - SLG",
+      "time": "SLG",
+      "gols": 3
     }
   ]
 }
